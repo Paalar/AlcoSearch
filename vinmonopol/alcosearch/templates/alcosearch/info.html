@@ -1,0 +1,50 @@
+{% extends "alcosearch/template.html" %} {% block content %} {% load staticfiles %}
+
+<h1>{{title.varetype}}</h1>
+
+<table>
+  <tr>
+  <th>
+    Varenavn
+  </th>
+  <th>
+    Varetype
+  </th>
+  <th>
+    Alkoholprosent på literpris
+  </th>
+  <th>
+    Alkoholprosent
+  </th>
+  <th>
+    Pris
+  </th>
+  <th>
+    Produktutvalg
+  </th>
+  </tr>
+{% for alkohol in Apl %}
+<tr>
+  <td>
+    <a href="{{alkohol.vareurl}}" target="_blank">{{ alkohol.varenavn}}</a>
+  </td>
+  <td>
+    {{alkohol.varetype}}
+  </td>
+  <td>
+    {{ alkohol.Apl}}
+  </td>
+  <td>
+    {{ alkohol.alkohol }}
+  </td>
+  <td>
+    {{ alkohol.pris }}
+  </td>
+  <td>
+    {{ alkohol.produktutvalg }}
+  </td>
+</tr>
+{%endfor%}
+</table>
+
+{% endblock %}

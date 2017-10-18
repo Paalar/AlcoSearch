@@ -1,0 +1,57 @@
+{% extends "alcosearch/template.html" %} {% load alcextra %}
+{% block content%}
+
+<div>
+  <form>
+    {% for alkoholtype in varetype %}
+     <button type="button" onclick="myFunction()" class="{{alkoholtype.varetype}}">
+       {{ alkoholtype.varetype }}
+     </button>
+   {% endfor %}
+  </form>
+
+</div>
+  {% for alkoholtype in varetype %}
+  <div class="{{alkoholtype.varetype}} alkoholtype" style="display:none">
+    <p>Det finnes {{alkoholtype.varetype__count }} {{ alkoholtype.varetype}}</p>
+      <table>
+        <tr>
+        <th>
+          Varenavn
+        </th>
+        <th>
+          Alkoholprosent på literpris
+        </th>
+        <th>
+          Alkoholprosent
+        </th>
+        <th>
+          Pris
+        </th>
+        <th>
+          Produktutvalg
+        </th>
+        </tr>
+        {% for alkohol in Apl %} {% if alkohol.varetype == alkoholtype.varetype %}
+        <tr>
+          <td>
+            <a href="{{alkohol.vareurl}}" target="_blank">{{ alkohol.varenavn}}</a>
+          </td>
+          <td>
+            {{ alkohol.Apl}}
+          </td>
+          <td>
+            {{ alkohol.alkohol }}
+          </td>
+          <td>
+            {{ alkohol.pris }}
+          </td>
+          <td>
+            {{ alkohol.produktutvalg }}
+          </td>
+        </tr>
+        {% endif %} {% endfor %}
+      </table>
+
+  </div>
+  {% endfor %} {% endblock %}

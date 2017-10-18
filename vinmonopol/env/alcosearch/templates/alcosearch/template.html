@@ -1,0 +1,22 @@
+<!DOCTYPE html> {% load staticfiles %}
+<html>
+
+  <head>
+    <script src="../../static/javascript/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="{% static 'css/alcosearch.css' %}" />
+    <title>Alcosearch</title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <div class="pageheader">
+      <h1>Alcosearch</h1>
+      <h3>Vinmonopol søk</h2>
+    </div>
+    <div class="blockContent">
+      {% block content %} {% endblock %}
+    </div>
+  </body>
+
+<script src="../../static/javascript/displayalcohol.js "></script>
+</html>

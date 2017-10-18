@@ -1,0 +1,33 @@
+body {
+  background-color: #536B78;
+}
+
+.alkoholtype {
+  display: none;
+}
+
+
+.pageheader {
+  background-color: #ACCBE1;
+  position: relative;
+}
+
+.pageheader h1, .pageheader h3 {
+  text-align: center;
+}
+
+.blockContent {
+  position: relative;
+      top:100px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 300px;
+}
+
+.search {
+  width: 300px;
+}
+input {
+  width: 300px;
+}
