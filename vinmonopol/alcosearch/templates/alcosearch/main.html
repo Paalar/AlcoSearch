@@ -1,10 +1,6 @@
 {% extends "alcosearch/template.html" %} {% load staticfiles %} {% block content %}
 
 
-<div class="search">
-  <input type="text" name="search" placeholder="Søk.. " />
-</div>
-
 <div class="tableInfo">
   <form method="POST" action="{% url 'info' %}">
     {% csrf_token %}
@@ -12,17 +8,6 @@
     <input type="radio" name="Varetype" value="{{alkoholtype.varetype}}" id="{{alkoholtype.varetype}}" />
     <label for="{{alkoholtype.varetype}}">{{alkoholtype.varetype}}</label><br />
     {%endfor%}
-    <!--
-    <input type="radio" name="Varetype" value="Hvitvin" id="Hvitvin" />
-    <label for="Hvitvin">Hvitvin</label>
-    <input type="radio" name="Varetype" value="Rødvin" id="Rødvin" />
-    <label for="Rødvin">Rødvin</label>
-    <input type="radio" name="Varetype" value="Druebrennevin" id="Druebrennevin" />
-    <label for="Druebrennevin">Durebrennevin</label>
-    <input type="radio" name="Varetype" value="Øl" id="Øl" />
-    <label for="Øl">Øl</label>
-  -->
-
     <input type="submit" id="Submit" />
   </form>
 </div>

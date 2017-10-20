@@ -20,21 +20,25 @@ def info(request):
     if request.method == "POST":
         varetype = request.POST["Varetype"]
         Apl = Fullinfo.objects.raw(
-            "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from FullInfo where Varetype = " + "'" + varetype + "'" + " order by Apl limit 100;")
+            "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varetype = " + "'" + varetype + "'" + " order by Apl limit 200;")
         title = Apl[0]
         return render(request, "alcosearch/info.html", {"Apl": Apl, "title": title})
 
 
-def vare(request, button):
-    Apl = Fullinfo.objects.raw(
-        "select ID, Varenummer, Varenavn," + button + ", (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from FullInfo where Alkohol > 0 order by Apl limit;")
+def search(request):
+    if request.method == "POST":
+        search = request.POST["Search"]
+        print(search)
+        Apl = Fullinfo.objects.raw(
+            "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varenavn like " + "'%%" + search + "%%'" + " order by Apl limit 200;")
+        return render(request, "alcosearch/search.html", {"Apl": Apl})
 
 
 def fullinfo(request):
     varetype = Fullinfo.objects.values("varetype").annotate(
         Count("varetype")).order_by("varetype")
     Apl = Fullinfo.objects.raw(
-        "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from FullInfo where Alkohol > 0 and Produktutvalg='Basisutvalget' order by Apl;")
+        "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Alkohol > 0 and Produktutvalg='Basisutvalget' order by Apl;")
     # data = Fullinfo.objects.filter(
     #    produktutvalg="Basisutvalget").order_by("literpris")
     return render(request, "alcosearch/fullinfo.html", {"varetype": varetype, "Apl": Apl})

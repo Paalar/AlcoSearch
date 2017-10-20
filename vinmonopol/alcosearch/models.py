@@ -131,7 +131,7 @@ class Fullinfo(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'FullInfo'
+        db_table = 'Fullinfo'
 
 
 class AuthGroup(models.Model):

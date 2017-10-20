@@ -10,8 +10,16 @@
 
   <body>
     <div class="pageheader">
-      <h1>Alcosearch</h1>
+      <h1 id="pageheader"><a href="https://monopolsearch.appspot.com">Alcosearch</a></h1>
       <h3>Vinmonopol søk</h2>
+    </div>
+
+    <div class="search">
+      <form method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+        <input type="text" name="Search" placeholder="Søk.. " />
+        <input type="submit"  />
+      </form>
     </div>
     <div class="blockContent">
       {% block content %} {% endblock %}
