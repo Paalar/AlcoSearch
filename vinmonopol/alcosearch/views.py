@@ -9,6 +9,10 @@ from django.http import HttpResponse
 from .models import Fullinfo
 from django.template.response import TemplateResponse
 
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
 
 def main(request):
     varetype = Fullinfo.objects.values("varetype").annotate(
@@ -18,11 +22,21 @@ def main(request):
 
 def info(request):
     if request.method == "POST":
-        varetype = request.POST["Varetype"]
-        Apl = Fullinfo.objects.raw(
-            "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varetype = " + "'" + varetype + "'" + " order by Apl limit 200;")
-        title = Apl[0]
-        return render(request, "alcosearch/info.html", {"Apl": Apl, "title": title})
+        if request.POST.get("Varetype"):
+            varetype = request.POST["Varetype"].replace(",", "_")
+            Apl = Fullinfo.objects.raw(
+                "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varetype = " + "'" + varetype.replace("%", "%%") + "'" + " order by Apl limit 200;")
+            title = Apl[0]
+        elif request.POST.get("Search"):
+            search = request.POST["Search"].replace(",", "_")
+            Apl = Fullinfo.objects.raw(
+                "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varenavn like " + "'%%" + search + "%%'" + " or Varetype like " + "'%%" + search + "%%'" + " order by Apl limit 200;")
+            title = request.POST["Search"]
+        elif request.POST.get("Top200"):
+            Apl = Fullinfo.objects.raw(
+                "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Alkohol > 0 order by Apl limit 200;")
+            title = "Top 200"
+    return render(request, "alcosearch/info.html", {"Apl": Apl, "title": title})
 
 
 def search(request):
@@ -30,15 +44,15 @@ def search(request):
         search = request.POST["Search"]
         print(search)
         Apl = Fullinfo.objects.raw(
-            "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varenavn like " + "'%%" + search + "%%'" + " order by Apl limit 200;")
+            "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varenavn like " + "'%%" + search + "%%'" + " or Varetype like " + "'%%" + search + "%%'" + " order by Apl limit 200;")
         return render(request, "alcosearch/search.html", {"Apl": Apl})
 
 
 def fullinfo(request):
-    varetype = Fullinfo.objects.values("varetype").annotate(
-        Count("varetype")).order_by("varetype")
+    # varetype = Fullinfo.objects.values("varetype").annotate(
+    #    Count("varetype")).order_by("varetype")
     Apl = Fullinfo.objects.raw(
-        "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Alkohol > 0 and Produktutvalg='Basisutvalget' order by Apl;")
+        "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo order by Apl;")
     # data = Fullinfo.objects.filter(
     #    produktutvalg="Basisutvalget").order_by("literpris")
-    return render(request, "alcosearch/fullinfo.html", {"varetype": varetype, "Apl": Apl})
+    return render(request, "alcosearch/fullinfo.html", {"Apl": Apl})

@@ -1,7 +1,9 @@
-{% extends "alcosearch/template.html" %} {% block content %} {% load staticfiles %}
+{% extends "alcosearch/template.html" %} {% block content %} {% load staticfiles %} {% load alcextra %}
 
-<h1>{{title.varetype}}</h1> 
-<table>
+<h1>{{title|title}}</h1>
+<div class="table-responsive">
+
+<table class="table">
   <tr>
   <th>
     Varenavn
@@ -31,13 +33,13 @@
 {% for alkohol in Apl %}
 <tr>
   <td>
-    <a href="{{alkohol.vareurl}}" target="_blank">{{ alkohol.varenavn}}</a>
+    <a href="{{alkohol.vareurl}}" target="_blank">{{ alkohol.varenavn|removeUnderscore}}</a>
   </td>
   <td>
-    {{alkohol.varetype}}
+    {{alkohol.varetype|removeUnderscore}}
   </td>
   <td>
-    {{ alkohol.Apl}}
+    {{alkohol.Apl|twoDec}}
   </td>
   <td>
     {{ alkohol.alkohol }}
@@ -57,6 +59,6 @@
 </tr>
 {%endfor%}
 </table>
-
+</div>
 
 {% endblock %}

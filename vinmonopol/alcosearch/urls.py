@@ -7,9 +7,3 @@ urlpatterns = [
     url(r"^info/", views.info, name="info"),
     url(r"^search/", views.search, name="search")
 ]
-
-"""
-for element in Fullinfo.objects.all():
-    urlpatterns.append(url(r"^varetype/",
-                           views.varetype, name="varetype"))
-"""

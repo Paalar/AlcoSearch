@@ -97,37 +97,13 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'HOST': '127.0.0.1',
+            'HOST': 'localhost',
             'PORT': '3306',
             'NAME': 'vinmonopol',
             'USER': 'gpd',
             'PASSWORD': 'Edward03',
         }
     }
-
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "vinmonopol",
-        "USER": "gpd",
-        "PASSWORD": "Edward03",
-        "HOST": "81.191.154.125",
-        "PORT": "4444",
-    }
-}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "vinmonopol",
-        "USER": "gpd",
-        "PASSWORD": "Edward03",
-        "HOST": "192.168.20.36",
-        "PORT": "3306",
-    }
-}
-"""
 
 
 # Password validation

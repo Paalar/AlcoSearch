@@ -1,16 +1,7 @@
 from django import template
+from django.utils.encoding import smart_str, smart_unicode
 
 register = template.Library()
-
-
-@register.filter
-def alcoholPerLiter(literPrice, abv):
-    try:
-        output = literPrice * (100 / abv)
-        output = ("{0:.2f}").format(output)
-        return output
-    except:
-        return "ikke oppgitt"
 
 
 @register.filter
@@ -18,17 +9,19 @@ def twoDec(num):
     try:
         return ("{0:.2f}".format(num))
     except:
-        if num == "":
-            return ""
-        else:
-            return int(num)
+        return num
 
 
 @register.filter
-def alcoholPerPrice(price, abv):
+def removeUnderscore(text):
     try:
-        output = price * (100 / abv)
-        output = ("{0:.2f}").format(output)
+        output = text.replace("_", ",")
         return output
     except:
-        return "ikke oppgitt"
+        return text
+
+
+@register.filter
+def title(title):
+    output = str(title)
+    return removeUnderscore(output)
