@@ -1,6 +1,8 @@
 {% extends "alcosearch/template.html" %} {% block content %} {% load staticfiles %} {% load alcextra %}
 
 <h1>{{title|title}}</h1>
+<input type="checkbox" name="inStore" id="inStore" />
+<label name="inStore">Fjern varer som må bestilles</label>
 <div class="table-responsive">
   <table class="table" id="infoTable">
     <thead class="thead-dark">

@@ -1,29 +1,29 @@
 {% extends "alcosearch/template.html" %} {% load staticfiles %} {% block content %} {% load alcextra %}
 
-
 <div class="tableInfo">
+
   <form method="POST" action="{% url 'info' %}">
     {% csrf_token %}
 
     <h3 class="title">Sprit & annet</h3>
     {% for alkoholtype in brennevin %}
-    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp"/>
     {% endfor %}
     <h3 class="title">Øl, sider, mjød & sake </h3>
     {% for alkoholtype in ol %}
-    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" />
     {% endfor %}
     <h3 class="title">Vin</h3>
     {% for alkoholtype in vin %}
-    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" />
     {% endfor %}
     <h3 class="title">Champagne</h3>
     {% for alkoholtype in champagne %}
-    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" />
     {% endfor %}
     <h3 class="title">Alkoholfri</h3>
     {% for alkoholtype in alkoholfritt %}
-    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" />
     {% endfor %}
   </form>
 </div>

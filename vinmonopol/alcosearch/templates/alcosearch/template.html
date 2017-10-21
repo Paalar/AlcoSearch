@@ -1,4 +1,4 @@
-<!DOCTYPE html> {% load staticfiles %}
+<!DOCTYPE html> {% load staticfiles %} {% load alcextra %}
 <html lang="en">
 
   <head>
@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/alcosearch.css' %}" />
+    <script src="../../static/javascript/displayalcohol.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Alcosearch</title>
   </head>
 
@@ -22,6 +24,54 @@
       <form method="POST" action="{% url 'info' %}">
         {% csrf_token %}
         <input type="text" name="Search" placeholder="Søk.. " />
+      </form>
+      <button id="avsøk">Avansert søk</button>
+      <form method="POST" action="{% url 'info' %}" id="advancedSearch">
+        {% csrf_token %}
+        <div>
+          <div class="divVin">
+            <input type="button" id="vinAvn" value="Vin"/><br />
+            {% for alkohol in vin %}
+              <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="vin"/> {{alkohol.varetype|removeUnderscore}}
+            {% endfor %}
+          </div>
+
+          <div class="divOl">
+            <input type="button" id="olAvn" value="Øl, sider, mjød & sake"/> <br />
+            {% for alkohol in ol %}
+              <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="ol"/> {{alkohol.varetype|removeUnderscore}}
+            {% endfor %}
+          </div>
+
+          <div class="divBrennevin">
+            <input type="button" id="brennAvn" value="Sprit & annet"/> <br />
+            {% for alkohol in brennevin %}
+            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="brennevin"/> {{alkohol.varetype|removeUnderscore}}
+            {% endfor %}
+          </div>
+
+          <div class="divChampagne">
+            <input type="button" id="chapAvn" value="Champagne"/> <br />
+            {% for alkohol in champagne %}
+            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="champagne"/> {{alkohol.varetype|removeUnderscore}}
+            {% endfor %}
+          </div>
+
+          <div class="divAlkoholfri">
+            <input type="button" id="alkfriAvn" value="Alkoholfri"/> <br />
+            {% for alkohol in alkoholfritt %}
+            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="alkoholfritt"/> {{alkohol.varetype|removeUnderscore}}
+            {% endfor %}
+          </div>
+        </div>
+        <br />
+        <button type="submit" name="Avansert" value="Søk" id="AvansertSøk" class="btn btn-search">
+          Søk
+        </button>
+        <!-- <input type="submit" name="Avansert" value="Søk" id="AvansertSøk" class=".btn" /> -->
+      </form>
+      <form method="POST" action="{% url 'info' %}">
+        {% csrf_token %}
         <input type="submit" name="Top200" value="Vis top 200 billigste varer på alkoholprosent" id="top200" />
       </form>
     </div>
