@@ -2,67 +2,70 @@
 
 <h1>{{title|title}}</h1>
 <div class="table-responsive">
-
-<table class="table">
-  <tr>
-  <th>
-    Varenavn
-  </th>
-  <th>
-    Varetype
-  </th>
-  <th>
-    Alkoholprosent på literpris
-  </th>
-  <th>
-    Alkoholprosent
-  </th>
-  <th>
-    Pris
-  </th>
-  <th>
-    Volum
-  </th>
-  <th>
-    Produktutvalg
-  </th>
-  <th>
-    Land
-  </th>
-  </tr>
-{% for alkohol in Apl %}
-<tr>
-  <td>
-    <a href="{{alkohol.vareurl}}" target="_blank">{{ alkohol.varenavn|removeUnderscore}}</a>
-  </td>
-  <td>
-    {{alkohol.varetype|removeUnderscore}}
-  </td>
-  <td>
-    {{alkohol.Apl|twoDec}}
-  </td>
-  <td>
-    {{ alkohol.alkohol }}
-  </td>
-  <td>
-    {{ alkohol.pris }}
-  </td>
-  <td>
-    {{ alkohol.volum }}
-  </td>
-  <td>
-    {% if alkohol.produktutvalg == "Basisutvalget" %}
-    I butikk
-    {% else %}
-    Må bestilles
-    {% endif %}
-  </td>
-  <td>
-    {{ alkohol.land }}
-  </td>
-</tr>
-{%endfor%}
-</table>
+  <table class="table" id="infoTable">
+    <thead class="thead-dark">
+      <tr>
+        <th id="Varenavn">
+          Varenavn
+        </th>
+        <th id="Varetype">
+          Varetype
+        </th>
+        <th id="Apl">
+          Alkoholprosent på literpris
+        </th>
+        <th id="Alkoholprosent">
+          Alkoholprosent
+        </th>
+        <th id="Pris">
+          Pris
+        </th>
+        <th id="Volum">
+          Volum
+        </th>
+        <th id="Produktutvalg">
+          Produktutvalg
+        </th>
+        <th id="Land">
+          Land
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for alkohol in Apl %}
+      <tr>
+        <td>
+          <a href="{{alkohol.vareurl}}" target="_blank">{{ alkohol.varenavn|removeUnderscore}}</a>
+        </td>
+        <td>
+          {{alkohol.varetype|removeUnderscore}}
+        </td>
+        <td>
+          {{alkohol.Apl|twoDec}}
+        </td>
+        <td>
+          {{ alkohol.alkohol }}
+        </td>
+        <td>
+          {{ alkohol.pris }}
+        </td>
+        <td>
+          {{ alkohol.volum }}
+        </td>
+        <td>
+          {% if alkohol.produktutvalg == "Basisutvalget" %}
+          I butikk
+          {% else %}
+          Må bestilles
+          {% endif %}
+        </td>
+        <td>
+          {{ alkohol.land }}
+        </td>
+      </tr>
+      {%endfor%}
+    </tbody>
+  </table>
 </div>
 
 {% endblock %}
