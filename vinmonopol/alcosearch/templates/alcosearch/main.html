@@ -4,18 +4,28 @@
 <div class="tableInfo">
   <form method="POST" action="{% url 'info' %}">
     {% csrf_token %}
-    {% for alkoholtype in varetype %}
+
+    <h3>Sprit & annet</h3>
+    {% for alkoholtype in brennevin %}
     <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
-    {%endfor%}
+    {% endfor %}
+    <h3>Øl, sider, mjød & sake </h3>
+    {% for alkoholtype in ol %}
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    {% endfor %}
+    <h3>Vin</h3>
+    {% for alkoholtype in vin %}
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    {% endfor %}
+    <h3>Champagne</h3>
+    {% for alkoholtype in champagne %}
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    {% endfor %}
+    <h3>Alkoholfri</h3>
+    {% for alkoholtype in alkoholfritt %}
+    <input type="submit" name="Varetype" value="{{alkoholtype.varetype|removeUnderscore}}" class="btn-primary btn sharp" id="{{alkoholtype.varetype}" />
+    {% endfor %}
   </form>
 </div>
-
-
-
-
-
-
-
-
 
 {% endblock %}

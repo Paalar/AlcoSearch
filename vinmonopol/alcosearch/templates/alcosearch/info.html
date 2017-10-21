@@ -51,7 +51,11 @@
     {{ alkohol.volum }}
   </td>
   <td>
-    {{ alkohol.produktutvalg }}
+    {% if alkohol.produktutvalg == "Basisutvalget" %}
+    I butikk
+    {% else %}
+    Må bestilles
+    {% endif %}
   </td>
   <td>
     {{ alkohol.land }}

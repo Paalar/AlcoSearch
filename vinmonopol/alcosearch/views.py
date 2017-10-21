@@ -8,6 +8,7 @@ from django.utils.encoding import smart_str, smart_unicode
 from django.http import HttpResponse
 from .models import Fullinfo
 from django.template.response import TemplateResponse
+from django.db.models import Q
 
 import sys
 reload(sys)
@@ -15,9 +16,21 @@ sys.setdefaultencoding('utf-8')
 
 
 def main(request):
-    varetype = Fullinfo.objects.values("varetype").annotate(
-        Count("varetype")).order_by("varetype")
-    return render(request, "alcosearch/main.html", {"varetype": varetype})
+    vin = Fullinfo.objects.values("varetype").annotate(
+        Count("varetype")).order_by("varetype").filter(Q(varetype__icontains="vin") | Q(varetype__icontains="Vermut") | Q(varetype__icontains="Sherry")
+                                                       | Q(varetype__icontains="Madeira")).exclude(Q(varetype__icontains="rennevin") | Q(varetype__icontains="lkoholfri"))
+    alkoholfritt = Fullinfo.objects.values("varetype").annotate(
+        Count("varetype")).order_by("varetype").filter(varetype__icontains="Alkoholfri")
+    ol = Fullinfo.objects.values("varetype").annotate(
+        Count("varetype")).order_by("varetype").filter(Q(varetype__icontains="øl") | Q(varetype__icontains="ale") | Q(varetype__icontains="arley") | Q(varetype__icontains="lager")
+                                                       | Q(varetype__icontains="Sider") | Q(varetype__icontains="Klosterstil") | Q(varetype__icontains="Porter") | Q(varetype__icontains="Red")
+                                                       | Q(varetype__icontains="Mjød") | Q(varetype__icontains="Spesial") | Q(varetype__icontains="Sake")).exclude(varetype__icontains="fritt")
+    brennevin = Fullinfo.objects.values("varetype").annotate(
+        Count("varetype")).order_by("varetype").filter(Q(varetype__icontains="rennevin") | Q(varetype__icontains="vodka") | Q(varetype__icontains="Akevitt") | Q(varetype__icontains="Gin")
+                                                       | Q(varetype__icontains="Rom") | Q(varetype__icontains="Likør") | Q(varetype__icontains="Whiskey") | Q(varetype__icontains="Genever") | Q(varetype__icontains="Bitter"))
+    champagne = Fullinfo.objects.values("varetype").annotate(
+        Count("varetype")).order_by("varetype").filter(varetype__icontains="pagne")
+    return render(request, "alcosearch/main.html", {"vin": vin, "alkoholfritt": alkoholfritt, "ol": ol, "champagne": champagne, "brennevin": brennevin})
 
 
 def info(request):

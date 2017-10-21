@@ -1,5 +1,5 @@
 body {
-  background-color: #536B78;
+  background-color: #D8DBE2;
 }
 
 .alkoholtype {
@@ -8,25 +8,23 @@ body {
 
 
 .pageheader {
-  background-color: #ACCBE1;
+  margin-top: 20px;
+  background-color: #A9BCD0;
   position: relative;
 }
 
-#pageheader:link {
-  color: black;
+#pageheader a {
   text-decoration: none;
 }
-#pageheader:visited {
-  color: black;
-  text-decoration: none;
-}
-#pageheader:hover {
-  color: black;
-  text-decoration: none;
-}
-#pageheader:active {
-  color: black;
-  text-decoration: none;
+
+#top200 {
+  width: 100%;
+  background-color: #373F51;
+  color: #D8DBE2;
+  padding: 20px 20px 20px 20px;
+  text-transform: uppercase;
+  border-radius:0;
+  border: 0 none;
 }
 
 .pageheader h1, .pageheader h3 {
@@ -40,10 +38,44 @@ body {
 }
 
 input[type="submit"] {
-  margin-top: 10px;
-  margin-bottom: 20px;
 }
+
 input[type="text"] {
+  margin-top: 100px;
   margin-bottom: 10px;
-  width: 300px;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+}
+
+.btn {
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn.sharp {
+  border-radius:0;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.active {
+    outline: 0 none;
+    background: #76B4BE;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #76B4BE;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background: #58A4B0;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 50px;
+    padding: 10px 30px 10px 30px;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #76B4BE;
 }
