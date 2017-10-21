@@ -33,7 +33,7 @@ body {
 
 .blockContent {
   position: relative;
-  top:100px;
+  top:40px;
   margin: auto;
 }
 
@@ -71,12 +71,16 @@ input[type="text"] {
 .btn-primary {
     background: #58A4B0;
     color: #ffffff;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     height: 50px;
     padding: 10px 30px 10px 30px;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: #76B4BE;
+}
+
+.title {
+  margin-top: 20px;
 }
