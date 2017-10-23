@@ -6,13 +6,16 @@ from django.db.models import Count
 from django.utils.encoding import smart_str, smart_unicode
 
 from django.http import HttpResponse
-from .models import Fullinfo
+from .models import Fullinfo, Butikkol
 from django.template.response import TemplateResponse
 from django.db.models import Q
 
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
+butikkOl = Butikkol.objects.raw(
+    "select ID, Produktnavn, Pris, Literpris, (Literpris * (100/Alkohol)) as Apl, Alkohol, Volum, Varetype, Emballasjetype, Butikk from butikkOl order by Apl;")
 
 varetype = Fullinfo.objects.values("varetype").annotate(
     Count("varetype")).order_by("varetype")
@@ -70,7 +73,7 @@ def info(request):
             title = ""
         else:
             return render(request, "alcosearch/main.html", {"vin": vin, "alkoholfritt": alkoholfritt, "ol": ol, "champagne": champagne, "brennevin": brennevin, "varetype": varetype})
-        return render(request, "alcosearch/info.html", {"Apl": Apl, "title": title, "varetype": varetype, "vin": vin, "alkoholfritt": alkoholfritt, "ol": ol, "champagne": champagne, "brennevin": brennevin})
+        return render(request, "alcosearch/info.html", {"butikkOl": butikkOl, "Apl": Apl, "title": title, "varetype": varetype, "vin": vin, "alkoholfritt": alkoholfritt, "ol": ol, "champagne": champagne, "brennevin": brennevin})
 
 
 def fullinfo(request):

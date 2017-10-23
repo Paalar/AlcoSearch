@@ -58,6 +58,7 @@ body {
 }
 
 input[type="checkbox"] {
+  display: inline-block;
 }
 label {
   display: inline-block;

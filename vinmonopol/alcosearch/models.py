@@ -19,6 +19,32 @@ class AlcoholType(models.Model):
     title = models.CharField(max_length=100, choices=ALCOHOL_CHOICES)
 
 
+class Butikkol(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)
+    produktnavn = models.CharField(
+        db_column="Produktnavn", max_length=250, blank=True, null=True)
+    varemerke = models.CharField(
+        db_column="Varemerke", max_length=45, blank=True, null=True)
+    pris = models.DecimalField(
+        db_column="Pris", max_digits=10, decimal_places=2, blank=True, null=True)
+    literpris = models.DecimalField(
+        db_column="Literpris", max_digits=10, decimal_places=2, blank=True, null=True)
+    volum = models.DecimalField(
+        db_column="Volum", max_digits=10, decimal_places=2, blank=True, null=True)
+    varetype = models.CharField(
+        db_column="Varetype", max_length=250, blank=True, null=True)
+    alkohol = models.DecimalField(
+        db_column="Alkohol", max_digits=10, decimal_places=2, blank=True, null=True)
+    emballasjetype = models.CharField(
+        db_column="Emballasjetype", max_length=250, blank=True, null=True)
+    butikk = models.CharField(
+        db_column="Butikk", max_length=250, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'butikkOl'
+
+
 class Fullinfo(models.Model):
     # Field name made lowercase.
     datotid = models.DateTimeField(db_column='Datotid', blank=True, null=True)
@@ -134,6 +160,7 @@ class Fullinfo(models.Model):
         db_table = 'Fullinfo'
 
 
+"""
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=80)
 
@@ -243,3 +270,4 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
+"""

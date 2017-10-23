@@ -23,38 +23,25 @@
       </tr>
     </thead>
     <tbody>
+      {% for Ol in butikkOl %}
       <tr>
         <th>
-          Dahls
+          Ol.produktnavn
         </th>
         <th>
-          kr 32.90
+        Ol.pris
         </th>
         <th>
-          {{65.80|calcApl:4.6}}
+          Ol.Apl
         </th>
         <th>
-          4.6%
+          Ol.alkohol
         </th>
         <th>
-          Bunnpris
+          Ol.butikk
         </th>
       </tr>
-        <th>
-          Tuborg
-        </th>
-        <th>
-          kr 25.90
-        </th>
-        <th>
-          {{51.80|calcApl:4.5}}
-        </th>
-        <th>
-          4.5%
-        </th>
-        <th>
-          Bunnpris
-        </th>
+      {% endfor %}
     </tbody>
   </table>
 </div>
