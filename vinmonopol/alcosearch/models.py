@@ -10,68 +10,33 @@ from __future__ import unicode_literals
 from django.db import models
 
 
-class AlcoholType(models.Model):
-    ALCOHOL_CHOICES = (
-        ("Akevitt", "Akevitt"),
-        ("Hvitvin", "Hvitvin"),
-        ("Vodka", "Vodka"),
-    )
-    title = models.CharField(max_length=100, choices=ALCOHOL_CHOICES)
-
-
-class Butikkol(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)
-    produktnavn = models.CharField(
-        db_column="Produktnavn", max_length=250, blank=True, null=True)
-    varemerke = models.CharField(
-        db_column="Varemerke", max_length=45, blank=True, null=True)
-    pris = models.DecimalField(
-        db_column="Pris", max_digits=10, decimal_places=2, blank=True, null=True)
-    literpris = models.DecimalField(
-        db_column="Literpris", max_digits=10, decimal_places=2, blank=True, null=True)
-    volum = models.DecimalField(
-        db_column="Volum", max_digits=10, decimal_places=2, blank=True, null=True)
-    varetype = models.CharField(
-        db_column="Varetype", max_length=250, blank=True, null=True)
-    alkohol = models.DecimalField(
-        db_column="Alkohol", max_digits=10, decimal_places=2, blank=True, null=True)
-    emballasjetype = models.CharField(
-        db_column="Emballasjetype", max_length=250, blank=True, null=True)
-    butikk = models.CharField(
-        db_column="Butikk", max_length=250, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'butikkOl'
-
-
 class Fullinfo(models.Model):
     # Field name made lowercase.
-    datotid = models.DateTimeField(db_column='Datotid', blank=True, null=True)
+    id = models.AutoField(db_column='ID', primary_key=True)
     # Field name made lowercase.
-    varenummer = models.IntegerField(
+    datotid = models.CharField(
+        db_column='Datotid', max_length=45, blank=True, null=True)
+    # Field name made lowercase.
+    varenummer = models.BigIntegerField(
         db_column='Varenummer', blank=True, null=True)
     # Field name made lowercase.
     varenavn = models.CharField(
-        db_column='Varenavn', max_length=100, blank=True, null=True)
+        db_column='Varenavn', max_length=200, blank=True, null=True)
     # Field name made lowercase.
-    volum = models.DecimalField(
-        db_column='Volum', max_digits=7, decimal_places=2, blank=True, null=True)
+    volum = models.FloatField(db_column='Volum', blank=True, null=True)
     # Field name made lowercase.
-    pris = models.DecimalField(
-        db_column='Pris', max_digits=10, decimal_places=2)
+    pris = models.FloatField(db_column='Pris', blank=True, null=True)
     # Field name made lowercase.
-    literpris = models.DecimalField(
-        db_column='Literpris', max_digits=12, decimal_places=2)
+    literpris = models.FloatField(db_column='Literpris', blank=True, null=True)
     # Field name made lowercase.
     varetype = models.CharField(
-        db_column='Varetype', max_length=70, blank=True, null=True)
+        db_column='Varetype', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     produktutvalg = models.CharField(
-        db_column='Produktutvalg', max_length=70, blank=True, null=True)
+        db_column='Produktutvalg', max_length=200, blank=True, null=True)
     # Field name made lowercase.
-    butikkategori = models.CharField(
-        db_column='Butikkategori', max_length=70, blank=True, null=True)
+    butikkatgeori = models.CharField(
+        db_column='Butikkatgeori', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     fylde = models.IntegerField(db_column='Fylde', blank=True, null=True)
     # Field name made lowercase.
@@ -86,81 +51,73 @@ class Fullinfo(models.Model):
     sodme = models.IntegerField(db_column='Sodme', blank=True, null=True)
     # Field name made lowercase.
     farge = models.CharField(
-        db_column='Farge', max_length=60, blank=True, null=True)
+        db_column='Farge', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     lukt = models.CharField(
-        db_column='Lukt', max_length=120, blank=True, null=True)
+        db_column='Lukt', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     smak = models.CharField(
-        db_column='Smak', max_length=120, blank=True, null=True)
-    # Field name made lowercase. Field renamed to remove unsuitable characters.
-    passer_til_1 = models.CharField(
-        db_column='Passer til 1', max_length=70, blank=True, null=True)
-    # Field name made lowercase. Field renamed to remove unsuitable characters.
-    passer_til_2 = models.CharField(
-        db_column='Passer til 2', max_length=70, blank=True, null=True)
-    # Field name made lowercase. Field renamed to remove unsuitable characters.
-    passer_til_3 = models.CharField(
-        db_column='Passer til 3', max_length=70, blank=True, null=True)
+        db_column='Smak', max_length=200, blank=True, null=True)
+    # Field name made lowercase.
+    passertil01 = models.CharField(
+        db_column='Passertil01', max_length=200, blank=True, null=True)
+    # Field name made lowercase.
+    passertil02 = models.CharField(
+        db_column='Passertil02', max_length=200, blank=True, null=True)
+    # Field name made lowercase.
+    passertil03 = models.CharField(
+        db_column='Passertil03', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     land = models.CharField(
-        db_column='Land', max_length=45, blank=True, null=True)
+        db_column='Land', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     distrikt = models.CharField(
-        db_column='Distrikt', max_length=45, blank=True, null=True)
+        db_column='Distrikt', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     underdistrikt = models.CharField(
-        db_column='Underdistrikt', max_length=45, blank=True, null=True)
+        db_column='Underdistrikt', max_length=200, blank=True, null=True)
     # Field name made lowercase.
-    argang = models.IntegerField(db_column='Argang', blank=True, null=True)
+    argang = models.CharField(
+        db_column='Argang', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     rastoff = models.CharField(
-        db_column='Rastoff', max_length=150, blank=True, null=True)
+        db_column='Rastoff', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     metode = models.CharField(
-        db_column='Metode', max_length=260, blank=True, null=True)
+        db_column='Metode', max_length=200, blank=True, null=True)
     # Field name made lowercase.
-    alkohol = models.DecimalField(
-        db_column='Alkohol', max_digits=4, decimal_places=2, blank=True, null=True)
+    alkohol = models.FloatField(db_column='Alkohol', blank=True, null=True)
     # Field name made lowercase.
-    sukker = models.CharField(
-        db_column='Sukker', max_length=45, blank=True, null=True)
+    sukker = models.FloatField(db_column='Sukker', blank=True, null=True)
     # Field name made lowercase.
-    syre = models.CharField(
-        db_column='Syre', max_length=45, blank=True, null=True)
+    syre = models.FloatField(db_column='Syre', blank=True, null=True)
     # Field name made lowercase.
     lagringsgrad = models.CharField(
-        db_column='Lagringsgrad', max_length=70, blank=True, null=True)
+        db_column='Lagringsgrad', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     produsent = models.CharField(
-        db_column='Produsent', max_length=70, blank=True, null=True)
+        db_column='Produsent', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     grossist = models.CharField(
-        db_column='Grossist', max_length=60, blank=True, null=True)
+        db_column='Grossist', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     distributor = models.CharField(
-        db_column='Distributor', max_length=45, blank=True, null=True)
+        db_column='Distributor', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     emballasjetype = models.CharField(
-        db_column='Emballasjetype', max_length=45, blank=True, null=True)
+        db_column='Emballasjetype', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     korktype = models.CharField(
-        db_column='Korktype', max_length=45, blank=True, null=True)
+        db_column='Korktype', max_length=200, blank=True, null=True)
     # Field name made lowercase.
     vareurl = models.CharField(
-        db_column='Vareurl', max_length=80, blank=True, null=True)
-    # Field name made lowercase.
-    id = models.AutoField(db_column='ID', primary_key=True)
-
-    def __str__(self):
-        return self.varetype
+        db_column='Vareurl', max_length=200, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'Fullinfo'
 
 
-"""
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=80)
 
@@ -227,6 +184,42 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
+class Butikkol(models.Model):
+    # Field name made lowercase.
+    id = models.AutoField(db_column='ID', primary_key=True)
+    # Field name made lowercase.
+    produktnavn = models.CharField(
+        db_column='Produktnavn', max_length=250, blank=True, null=True)
+    # Field name made lowercase.
+    varemerke = models.CharField(
+        db_column='Varemerke', max_length=45, blank=True, null=True)
+    # Field name made lowercase.
+    pris = models.DecimalField(
+        db_column='Pris', max_digits=10, decimal_places=2, blank=True, null=True)
+    # Field name made lowercase.
+    literpris = models.DecimalField(
+        db_column='Literpris', max_digits=10, decimal_places=2, blank=True, null=True)
+    # Field name made lowercase.
+    volum = models.DecimalField(
+        db_column='Volum', max_digits=10, decimal_places=2, blank=True, null=True)
+    # Field name made lowercase.
+    varetype = models.CharField(
+        db_column='Varetype', max_length=250, blank=True, null=True)
+    # Field name made lowercase.
+    alkohol = models.DecimalField(
+        db_column='Alkohol', max_digits=10, decimal_places=2, blank=True, null=True)
+    # Field name made lowercase.
+    emballasjetype = models.CharField(
+        db_column='Emballasjetype', max_length=250, blank=True, null=True)
+    # Field name made lowercase.
+    butikk = models.CharField(
+        db_column='Butikk', max_length=250, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'butikkOl'
+
+
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
@@ -270,4 +263,3 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-"""

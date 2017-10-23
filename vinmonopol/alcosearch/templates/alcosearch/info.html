@@ -26,19 +26,19 @@
       {% for Ol in butikkOl %}
       <tr>
         <th>
-          Ol.produktnavn
+          {{Ol.produktnavn}}
         </th>
         <th>
-        Ol.pris
+        {{Ol.pris}}
         </th>
         <th>
-          Ol.Apl
+          {{Ol.Apl|twoDec}}
         </th>
         <th>
-          Ol.alkohol
+          {{Ol.alkohol}}
         </th>
         <th>
-          Ol.butikk
+          {{Ol.butikk}}
         </th>
       </tr>
       {% endfor %}
