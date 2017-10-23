@@ -26,8 +26,8 @@ ol = Fullinfo.objects.values("varetype").annotate(
                                                    | Q(varetype__icontains="Sider") | Q(varetype__icontains="Klosterstil") | Q(varetype__icontains="Porter") | Q(varetype__icontains="Red")
                                                    | Q(varetype__icontains="Mjød") | Q(varetype__icontains="Spesial") | Q(varetype__icontains="Sake")).exclude(varetype__icontains="fritt")
 brennevin = Fullinfo.objects.values("varetype").annotate(
-    Count("varetype")).order_by("varetype").filter(Q(varetype__icontains="rennevin") | Q(varetype__icontains="vodka") | Q(varetype__icontains="Akevitt") | Q(varetype__icontains="Gin")
-                                                   | Q(varetype__icontains="Rom") | Q(varetype__icontains="Likør") | Q(varetype__icontains="Whiskey") | Q(varetype__icontains="Genever") | Q(varetype__icontains="Bitter"))
+    Count("varetype")).order_by("varetype").filter(Q(varetype__icontains="Brennevin") | Q(varetype__icontains="vodka") | Q(varetype__icontains="Akevitt") | Q(varetype__icontains="Gin")
+                                                   | Q(varetype__icontains="Rom") | Q(varetype__icontains="Likør") | Q(varetype__icontains="Whiskey") | Q(varetype__icontains="Genever") | Q(varetype__icontains="Bitter")).exclude(varetype__icontains="Aromatisert")
 champagne = Fullinfo.objects.values("varetype").annotate(
     Count("varetype")).order_by("varetype").filter(varetype__icontains="pagne")
 
