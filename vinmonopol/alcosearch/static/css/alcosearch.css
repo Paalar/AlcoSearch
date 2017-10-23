@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: #D8DBE2;
 }
@@ -11,6 +15,18 @@ body {
   margin-top: 20px;
   background-color: #A9BCD0;
   position: relative;
+}
+
+#footer {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
 }
 
 #pageheader a {

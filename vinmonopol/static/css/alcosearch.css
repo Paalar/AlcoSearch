@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
   background-color: #D8DBE2;
 }
@@ -13,8 +17,24 @@ body {
   position: relative;
 }
 
+#footer {
+  margin-top: 100px;
+  margin-bottom: 20px;
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+}
+
 #pageheader a {
   text-decoration: none;
+}
+
+#vinAvn, #olAvn, #brennAvn, #chapAvn, #alkfriAvn {
+  /*width: 33%;*/
 }
 
 #top200 {
@@ -22,9 +42,43 @@ body {
   background-color: #373F51;
   color: #D8DBE2;
   padding: 20px 20px 20px 20px;
-  text-transform: uppercase;
   border-radius:0;
   border: 0 none;
+}
+
+#AvansertSøk {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 50%;
+  margin-left: 25%;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+}
+label {
+  display: inline-block;
+}
+
+.divVin, .divOl, .divBrennevin, .divChampagne, .divAlkoholfri  {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+
+#avsøk {
+  width: 100%;
+  background-color: #53627A;
+  color: #D8DBE2;
+  padding: 10px 10px 10px 10px;
+  border-radius:0;
+  border: 0 none;
+  margin-bottom: 10px;
+}
+
+#AvansertSøk {
+  background-color: #76B4BE;
 }
 
 .pageheader h1, .pageheader h3 {
