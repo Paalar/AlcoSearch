@@ -29,8 +29,10 @@ body {
   text-align: center;
 }
 
-#pageheader a {
-  text-decoration: none;
+#pageheader img{
+  margin: auto;
+  display: block;
+  width: 50%;
 }
 
 #vinAvn, #olAvn, #brennAvn, #chapAvn, #alkfriAvn {

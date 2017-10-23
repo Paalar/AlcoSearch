@@ -14,13 +14,14 @@ $(document).ready(function() {
   })
 
   $("#advancedSearch").hide();
+  $("#butikkOlInfo").hide();
+
+  $("#showButikk").click(function() {
+    $("#butikkOlInfo").toggle();
+  })
 
   $("#avsøk").click(function(){
-    if($("#advancedSearch").is(":visible")) {
-      $("#advancedSearch").hide();
-    } else {
-      $("#advancedSearch").show();
-    }
+    $("#advancedSearch").toggle();
   })
 
 var vinClicked = false;
