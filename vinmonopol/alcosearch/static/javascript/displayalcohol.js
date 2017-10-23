@@ -4,7 +4,7 @@ $(document).ready(function() {
     paging: false,
     searching: false,
     info: false,
-    "order": [[ 2, "asc" ]],
+    "order" : [[2, "asc"]]
   });
 
   $("#inStore").click(function() {

@@ -9,7 +9,7 @@ def twoDec(num):
     try:
         return ("{0:.2f}".format(num))
     except:
-        return num
+        return 0.00
 
 
 @register.filter
