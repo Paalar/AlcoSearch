@@ -1,5 +1,63 @@
 {% extends "alcosearch/template.html" %} {% block content %} {% load staticfiles %} {% load alcextra %}
 
+<button id="showButikk">Priser på øl i butikk</button>
+<div id="butikkOlInfo">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>
+          Varenavn
+        </th>
+        <th>
+          Pris
+        </th>
+        <th>
+          Alkoholprosent på literpris
+        </th>
+        <th>
+          Alkoholprosent
+        </th>
+        <th>
+          Butikk
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>
+          Dahls
+        </th>
+        <th>
+          kr 32.90
+        </th>
+        <th>
+          {{65.80|calcApl:4.6}}
+        </th>
+        <th>
+          4.6%
+        </th>
+        <th>
+          Bunnpris
+        </th>
+      </tr>
+        <th>
+          Tuborg
+        </th>
+        <th>
+          kr 25.90
+        </th>
+        <th>
+          {{51.80|calcApl:4.5}}
+        </th>
+        <th>
+          4.5%
+        </th>
+        <th>
+          Bunnpris
+        </th>
+    </tbody>
+  </table>
+</div>
 <h1>{{title|title}}</h1>
 <input type="checkbox" name="inStore" id="inStore" />
 <label name="inStore">Fjern varer som må bestilles</label>

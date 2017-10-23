@@ -25,3 +25,8 @@ def removeUnderscore(text):
 def title(title):
     output = str(title)
     return removeUnderscore(output)
+
+
+@register.filter
+def calcApl(literPrice, abv):
+    return twoDec(literPrice * (100 / abv))
