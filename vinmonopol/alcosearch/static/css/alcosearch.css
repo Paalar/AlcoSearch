@@ -10,6 +10,26 @@ body {
   display: none;
 }
 
+.dropdown {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 10px;
+}
+
+.divVin input {
+  display: inline-block;
+}
+
+#vinAvn, #olAvn, #brennAvn, #chapAvn, #alkfriAvn {
+  width: 100%;
+}
+
+#advSearch {
+  text-align: center;
+  margin: auto;
+}
+
+
 
 .pageheader {
   margin-top: 20px;
@@ -104,22 +124,41 @@ input[type="text"] {
   padding: 5px 10px 5px 10px;
 }
 
-.btn {
+.btn-search {
     border: 0 none;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-
 }
 
-.btn.sharp {
+.btn-primary {
+  border: 0 none;
+}
+
+.btn-secondary {
+  background-color: #A9BCD0;
+  border: 0 none;
+  outline: 0 none;
+}
+
+.btn-secondary:focus {
+    outline: 0 none;
+    background: #8B9AAB;
+}
+
+
+.btn-search .sharp {
   border-radius:0;
 }
 
-.btn:focus, .btn:active:focus, .btn.active:focus, .btn.active {
+.btn-search:focus, .btn-search:active:focus, .btn.-searchactive:focus, .btn-search.active {
     outline: 0 none;
     background: #76B4BE;
 }
+
+
+
+
 .btn-primary:active, .btn-primary.active {
     background: #76B4BE;
     box-shadow: none;

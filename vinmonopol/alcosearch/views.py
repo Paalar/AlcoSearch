@@ -45,7 +45,7 @@ def info(request):
             vare = request.POST["Varetype"].replace(",", "_")
             Apl = Fullinfo.objects.raw(
                 "select ID, Varenummer, Varenavn, Varetype, (Literpris * (100/Alkohol)) as Apl, Alkohol, Pris, Produktutvalg, Vareurl from Fullinfo where Varetype = " + "'" + vare.replace("%", "%%") + "'" + " order by Apl limit 200;")
-            title = Apl[0]
+            title = request.POST.get("Varetype")
         elif request.POST.get("Search"):
             search = request.POST["Search"].replace(",", "_")
             Apl = Fullinfo.objects.raw(

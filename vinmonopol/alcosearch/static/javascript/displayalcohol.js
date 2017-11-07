@@ -1,6 +1,12 @@
 $(document).ready(function() {
 
 
+  $("#fullInfoTable").DataTable( {
+    paging: false,
+    searching: false,
+    info: false,
+    "order" : [[2, "asc"]]
+  });
 
   $("#infoTable").DataTable( {
     paging: false,
