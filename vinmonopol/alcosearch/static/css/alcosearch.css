@@ -35,8 +35,20 @@ body {
   width: 50%;
 }
 
+
+.dropdown {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 10px;
+}
+
 #vinAvn, #olAvn, #brennAvn, #chapAvn, #alkfriAvn {
-  /*width: 33%;*/
+  width: 100%;
+}
+
+#advSearch {
+  text-align: center;
+  margin: auto;
 }
 
 #top200 {
