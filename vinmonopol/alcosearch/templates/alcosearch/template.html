@@ -27,52 +27,51 @@
       </form>
       <button class="toggle" id="avsøk">Avansert søk</button>
       <form method="POST" action="{% url 'info' %}" id="advancedSearch">
-        <p>
-          Utseende er midlertidig. Lagt til for funksjonalitet.
-        </p>
         {% csrf_token %}
-        <div>
+        <div class="dropdown">
           <div class="divVin">
             <input type="button" id="vinAvn" value="Vin"/><br />
             {% for alkohol in vin %}
-              <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="vin"/> {{alkohol.varetype|removeUnderscore}}
+              <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="vin"/> {{alkohol.varetype|removeUnderscore}} <br />
             {% endfor %}
           </div>
 
           <div class="divOl">
             <input type="button" id="olAvn" value="Øl, sider, mjød & sake"/> <br />
             {% for alkohol in ol %}
-              <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="ol"/> {{alkohol.varetype|removeUnderscore}}
+              <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="ol"/> {{alkohol.varetype|removeUnderscore}} <br />
             {% endfor %}
           </div>
 
           <div class="divBrennevin">
             <input type="button" id="brennAvn" value="Sprit & annet"/> <br />
             {% for alkohol in brennevin %}
-            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="brennevin"/> {{alkohol.varetype|removeUnderscore}}
+            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="brennevin"/> {{alkohol.varetype|removeUnderscore}} <br />
             {% endfor %}
           </div>
 
           <div class="divChampagne">
             <input type="button" id="chapAvn" value="Champagne"/> <br />
             {% for alkohol in champagne %}
-            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="champagne"/> {{alkohol.varetype|removeUnderscore}}
+            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="champagne"/> {{alkohol.varetype|removeUnderscore}} <br />
             {% endfor %}
           </div>
 
           <div class="divAlkoholfri">
             <input type="button" id="alkfriAvn" value="Alkoholfri"/> <br />
             {% for alkohol in alkoholfritt %}
-            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="alkoholfritt"/> {{alkohol.varetype|removeUnderscore}}
+            <input type="checkbox" name="Advanced" value="{{alkohol.varetype|removeUnderscore}}" class="alkoholfritt"/> {{alkohol.varetype|removeUnderscore}} <br />
             {% endfor %}
           </div>
-          <input type="number" value="50" name="limitID" id="limitID"/>
-          <label>Begrens antall produkter</label>
-        </div>
-        <br />
-        <button type="submit" name="Avansert" value="Søk" id="AvansertSøk" class="btn btn-search">
-          Søk
-        </button>
+          </div>
+          <div id="advSearch">
+            <input type="number" value="50" name="limitID" id="limitID"/>
+            <label>Begrens antall produkter</label>
+          <button type="submit" name="Avansert" value="Søk" id="AvansertSøk" class="btn btn-search">
+            Søk
+          </button>
+          </div>
+
         <!-- <input type="submit" name="Avansert" value="Søk" id="AvansertSøk" class=".btn" /> -->
       </form>
       <form method="POST" action="{% url 'info' %}">
